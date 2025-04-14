@@ -28,7 +28,6 @@
 
 
 // AUDIO
-
 const audio = document.getElementById('audio');
 const toggleBtn = document.getElementById('toggle-btn');
 
@@ -44,12 +43,12 @@ const pauseIcon = `
   <path d="M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0z"/>
 </svg>`;
 
-// Cambia el ícono dependiendo del estado del audio
+// Actualiza el ícono según el estado del audio
 function updateIcon() {
-  toggleBtn.innerHTML = audio.paused ? pauseIcon : playIcon;
+  toggleBtn.innerHTML = audio.paused ? playIcon : pauseIcon;
 }
 
-// Click del botón: alternar play/pause
+// Alternar play/pause al hacer clic en el botón
 toggleBtn.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
@@ -59,12 +58,20 @@ toggleBtn.addEventListener('click', () => {
   updateIcon();
 });
 
-// Al cargar la página, establecer el ícono correcto
+// Al cargar la página, intentar reproducir el audio
 window.addEventListener('DOMContentLoaded', () => {
-  updateIcon();
+  audio.play().then(() => {
+    // Autoplay exitoso
+    updateIcon();
+  }).catch((err) => {
+    // Autoplay bloqueado
+    console.warn("Autoplay bloqueado por el navegador:", err);
+    updateIcon();
+  });
 });
 
-// Cuando termina el audio, cambiar ícono también
+// Cambiar ícono al finalizar el audio
 audio.addEventListener('ended', () => {
   updateIcon();
 });
+
