@@ -419,90 +419,72 @@
   }
 }
   
-  /* Modal: Fondo y estilo */
 .modal {
-    display: none; /* Inicialmente oculto */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 90%; /* Ajuste de ancho para dispositivos móviles */
-    height: auto; /* Ajuste automático de altura */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
-    justify-content: center;
-    align-items: center;
-    padding: 20px; /* Espaciado */
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 .modal-content {
-    position: relative;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 80vw; /* Ajuste para que no se desborde en pantallas pequeñas */
-    max-height: 80vh; /* Limitamos la altura del modal */
-    overflow: auto;
-    margin: auto;
-    width: 400px; /* Tamaño fijo para escritorio */
+  position: relative;
+  width: 90vw;
+  max-width: 300px;
+  padding: 10px 10px 20px 10px;
+  background: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: rotate(-2deg);
+  transition: all 0.3s ease;
+}
+
+.modal-content .photo {
+  background-color: #87ceeb;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
 .modal-content img {
-    width: 100%;
-    height: auto;
-    border-bottom: 20px solid #fff;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modal-content .caption {
+  font-family: "Courier New", monospace;
+  text-align: center;
+  margin-top: 12px;
+  color: #333;
+  font-size: 14px;
+  opacity: 0.8;
 }
 
 .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;
+  display: none;
 }
 
-/* Ajustes para dispositivos móviles */
-@media (max-width: 768px) {
-    .modal {
-        width: 95%; /* Ancho máximo del 95% para pantallas más pequeñas */
-        padding: 10px;
-    }
-
-    .modal-content {
-        width: 100%; /* Asegura que el contenido use el 100% del ancho */
-        max-width: 100%; /* Asegura que no se desborde */
-        height: auto; /* Ajuste de altura automático */
-    }
+/* Responsive */
+@media (min-width: 768px) {
+  .modal-content {
+    max-width: 320px;
+  }
 }
 
-/* Ajustes para pantallas muy pequeñas (por ejemplo, móviles en modo retrato) */
-@media (max-width: 480px) {
-    .modal {
-        width: 95%; /* Asegura que no se salga de la pantalla */
-    }
-
-    .modal-content {
-        width: 100%;
-        height: auto;
-        padding: 15px;
-    }
+/* Ajustes para el modal: sin rotación ni brillo */
+.modal-content {
+  transform: none !important;
+  transition: none !important;
 }
 
-/* Media Query para Desktop */
-@media (min-width: 1024px) {
-    .modal {
-        width: 40%; /* Ajusta el tamaño del modal para pantallas grandes */
-        height: auto;
-        padding: 40px; /* Espaciado adicional en pantallas grandes */
-    }
-
-    .modal-content {
-        width: 100%;
-        max-width: 500px; /* Limita el tamaño máximo para pantallas grandes */
-        padding: 30px; /* Espaciado dentro del modal */
-        height: auto;
-        margin: auto;
-    }
+.modal-content .photo::before {
+  display: none !important;
 }
 
 

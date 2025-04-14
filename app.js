@@ -1,30 +1,31 @@
-// Obtener todos los elementos de la foto y el modal
-const photos = document.querySelectorAll('.photo-img');
-const modal = document.getElementById('modal');
-const modalImg = document.getElementById('modal-img');
-const caption = document.querySelector('.modal-caption');
-const closeBtn = document.querySelector('.close-btn');
 
-// Evento para abrir el modal al hacer clic en la foto
-photos.forEach(photo => {
-  photo.addEventListener('click', (e) => {
-    modal.style.display = 'flex'; // Mostrar el modal
-    modalImg.src = e.target.src; // Cambiar la imagen en el modal
-    caption.innerHTML = e.target.nextElementSibling.innerHTML; // Copiar la leyenda
+  const polaroids = document.querySelectorAll('.polaroid');
+  const modal = document.getElementById('polaroidModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalCaption = document.getElementById('modalCaption');
+  const closeModal = document.getElementById('closeModal');
+
+  polaroids.forEach(polaroid => {
+    polaroid.addEventListener('click', () => {
+      const img = polaroid.querySelector('img');
+      const caption = polaroid.querySelector('.caption');
+
+      modalImg.src = img.src;
+      modalCaption.textContent = caption.textContent;
+      modal.style.display = 'flex';
+    });
   });
-});
 
-// Evento para cerrar el modal al hacer clic en la X
-closeBtn.addEventListener('click', () => {
-  modal.style.display = 'none'; // Ocultar el modal
-});
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
 
-// Evento para cerrar el modal si se hace clic fuera del contenido del modal
-window.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.style.display = 'none'; // Ocultar el modal
-  }
-});
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
 
 // AUDIO
 
