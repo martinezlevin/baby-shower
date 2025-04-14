@@ -349,25 +349,26 @@
     cursor: pointer; /* Cambiar el cursor al pasar sobre la imagen */
   }
   
-  /* 4. Brillo animado sobre la imagen */
-  .photo::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 150%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0) 45%,
-      rgba(255, 255, 255, 0.4) 48%,
-      rgba(255, 255, 255, 0) 51%
-    );
-    animation: shine 2.5s ease-in-out infinite;
-    animation-delay: 0.5s; /* Ajusta el delay para cada ciclo */
-    z-index: 2;
-    pointer-events: none;
-  }
+/* 4. Brillo animado sobre la imagen */
+.photo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.4) 32%,
+    rgba(255, 255, 255, 0) 35%
+  );
+  animation: shine 2s infinite linear;
+  z-index: 2;
+}
+
   
   /* 5. Arañazos superpuestos */
   .scratches {
@@ -405,15 +406,18 @@
     opacity: 0.8;
   }
   
-  /* 7. Animación del brillo */
-  @keyframes shine {
-    0% {
-      transform: translateX(-100%) rotate(120deg);
-    }
-    100% {
-      transform: translateX(100%) rotate(120deg);
-    }
+/* Animación del brillo */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(120deg); /* Empieza fuera de la pantalla */
   }
+  50% {
+    transform: translateX(100%) rotate(120deg); /* Llega al otro extremo */
+  }
+  100% {
+    transform: translateX(200%) rotate(120deg); /* Vuelve a salir de la pantalla */
+  }
+}
   
   /* Modal: Fondo y estilo */
 .modal {

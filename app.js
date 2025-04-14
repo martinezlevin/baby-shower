@@ -26,7 +26,7 @@ window.addEventListener('click', (e) => {
   }
 });
 
-
+// AUDIO
 
 const audio = document.getElementById('audio');
 const toggleBtn = document.getElementById('toggle-btn');
