@@ -568,3 +568,30 @@
     }
   }
   
+
+
+  /* AUDIO */
+
+  audio {
+    display: none;
+  }
+  
+  #toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1rem;
+    background-color: #ffffff00;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 9999;
+    transition: background-color 0.3s ease;
+  }
+  
+  #toggle-btn:hover {
+    background-color: #ffffff;
+  }
+  
